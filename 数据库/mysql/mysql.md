@@ -1,10 +1,13 @@
 # SQL Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html
 
 ## Database Administraction Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/sql-server-administration-statements.html
 
-### Table Maintenance Statements 
+### Table Maintenance Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html
 
 ```mysql
@@ -16,12 +19,15 @@ repair table stock_universe;
 ```
 
 ### Set Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/set-statement.html
+
 ```mysql
 set max_connections = 1000;
 ```
 
-### Show Statements 
+### Show Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/show.html
 
 ```mysql
@@ -104,4 +110,27 @@ show warnings;
 ```
 
 ### Other Statements
+
 https://dev.mysql.com/doc/refman/8.0/en/other-administrative-statements.html
+
+# 事务 transaction
+
+```mysql
+select *
+from information_schema.innodb_trx;
+
+# Atomicity
+show variables like 'autocommit';
+set autocommit = off;
+begin;
+commit;
+rollback;
+
+# Isolation
+show variables like 'transaction%';
+
+set transaction isolation level read uncommitted;
+set transaction isolation level read committed;
+set transaction isolation level repeatable read;
+set transaction isolation level serializable;
+```
