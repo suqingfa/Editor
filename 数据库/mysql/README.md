@@ -119,7 +119,7 @@ into_option: {
 - 列子查询
 - 表子查询
 
-[subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)
+[sub queries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)
 
 ## 数据库控制语言
 
@@ -186,7 +186,7 @@ select *,
        dense_rank() over w,
        percent_rank() over w
 from test
-    window w as (order by value);
+window w as (order by value);
 ```
 
 # 事务
@@ -218,6 +218,7 @@ from test
 
 ```mysql
 start transaction;
+begin;
 
 commit;
 
@@ -478,14 +479,14 @@ from performance_schema.data_locks;
 - page 16KB 磁盘管理最小单元
 - row
 
-![InnoDB Architecture](images/innodb-architecture-8-0.png)
+![InnoDB Architecture](https://dev.mysql.com/doc/refman/8.0/en/images/innodb-architecture-8-0.png)
 
 ## 事务原理
 
 redo log / undo log
 解决事务的原子性一致性持久性
 
-MVCC多版本并发控制 解决隔离性
+MVCC多版本并发控制 优化读写并发性
 
 - 当前读 读取最新版本,读取时要保证其他并发事务不能修改当前记录,需要对读取记录进行加锁
   select ... lock in share model, select ... for update, update ..., insert ..., delete ...
