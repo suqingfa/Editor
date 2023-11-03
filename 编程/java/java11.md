@@ -2,7 +2,7 @@
 
 # interface privete method
 
-# var 
+# var
 
 # ZGC
 

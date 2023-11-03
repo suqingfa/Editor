@@ -294,7 +294,8 @@ public class JUCReentrantLock {
 
 ## LockSupport
 
-LockSupport类使用了一种名为Permit（许可）的概念来做到阻塞和唤醒线程的功能，可以把许可看成是一种(0,1)信号量（Semaphore），但与 Semaphore 不同的是，许可的累加上限是1。
+LockSupport类使用了一种名为Permit（许可）的概念来做到阻塞和唤醒线程的功能，可以把许可看成是一种(0,1)信号量（Semaphore），但与
+Semaphore 不同的是，许可的累加上限是1。
 初始时，permit为0，当调用unpark()方法时，线程的permit加1，当调用park()方法时，如果permit为0，则调用线程进入阻塞状态。
 
 ```java
@@ -370,7 +371,8 @@ AQS框架内部通过一个内部类ConditionObject，实现了Condition接口�
 
 #### Skeleton Method
 
-AQS利用了模板方法模式，其中大多数方法都是final或是private的，我们把这类方法称为Skeleton Method，也就是说这些方法是AQS框架自身定义好的骨架，子类是不能覆写的。
+AQS利用了模板方法模式，其中大多数方法都是final或是private的，我们把这类方法称为Skeleton
+Method，也就是说这些方法是AQS框架自身定义好的骨架，子类是不能覆写的。
 下面会按类别简述一些比较重要的方法，具体实现细节及原理会在本系列后续部分详细阐述。
 
 ##### CAS操作
@@ -423,7 +425,8 @@ AQS利用了模板方法模式，其中大多数方法都是final或是private�
 
 #### 等待队列
 
-等待队列，是AQS框架的核心，整个框架的关键其实就是如何在并发状态下管理被阻塞的线程。 等待队列是严格的FIFO队列，是Craig，Landin和Hagersten锁（CLH锁）的一种变种，采用双向链表实现，因此也叫CLH队列。
+等待队列，是AQS框架的核心，整个框架的关键其实就是如何在并发状态下管理被阻塞的线程。
+等待队列是严格的FIFO队列，是Craig，Landin和Hagersten锁（CLH锁）的一种变种，采用双向链表实现，因此也叫CLH队列。
 
 # 辅助同步类
 
@@ -490,7 +493,8 @@ public class JUCSync {
 
 ## Semaphore
 
-Semaphore维护了一个许可集，其实就是一定数量的“许可证”。 当有线程想要访问共享资源时，需要先获取(acquire)的许可；如果许可不够了，线程需要一直等待，直到许可可用。当线程使用完共享资源后，可以归还(release)
+Semaphore维护了一个许可集，其实就是一定数量的“许可证”。 当有线程想要访问共享资源时，需要先获取(acquire)
+的许可；如果许可不够了，线程需要一直等待，直到许可可用。当线程使用完共享资源后，可以归还(release)
 许可，以供其它需要的线程使用。
 
 ```java
